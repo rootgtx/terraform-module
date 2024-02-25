@@ -4,6 +4,10 @@ resource "aws_instance" "aws_EC2_instance" {
     tags = var.tags
     user_data = var.user_data
     provisioner "local-exec" {
-     command = "touch teste.txt" 
+     command = "touch teste.txt"     
+    }
+    provisioner "local-exec" {
+     command = "rm -rf teste.txt"
+        when    = destroy 
     }
 }
